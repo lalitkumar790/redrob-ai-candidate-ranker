@@ -29,6 +29,10 @@ from src.scoring.career_credibility_scorer import (
     calculate_career_credibility_score
 )
 
+from src.scoring.production_experience_scorer import (
+    calculate_production_experience_score
+)
+
 def rank_candidate(candidate):
 
     features = extract_candidate_features(candidate)
@@ -66,6 +70,12 @@ def rank_candidate(candidate):
     )
 )
 
+    production_experience_score = (
+    calculate_production_experience_score(
+        candidate
+    )
+)
+
     # final_score = (
     #     technical_score * 0.20 +
     #     signal_score * 0.20 +
@@ -87,12 +97,20 @@ def rank_candidate(candidate):
     # + ai_score * 0.40
     # + career_affinity * 0.20
     #  )
+#     final_score = (
+#     technical_score * 0.15
+#     + signal_score * 0.15
+#     + experience_score * 0.10
+#     + ai_score * 0.40
+#     + career_credibility * 0.20
+# )
     final_score = (
     technical_score * 0.15
-    + signal_score * 0.15
+    + signal_score * 0.10
     + experience_score * 0.10
-    + ai_score * 0.40
-    + career_credibility * 0.20
+    + ai_score * 0.25
+    + career_credibility * 0.15
+    + production_experience_score * 0.25
 )
 
     # return {
@@ -122,5 +140,31 @@ def rank_candidate(candidate):
     "experience_score": experience_score,
     "ai_score": ai_score,
     "career_credibility": career_credibility,
+    "production_experience_score": production_experience_score,
     "final_score": round(final_score, 2)
 }
+
+
+
+
+
+def rank_candidates(candidates):
+
+    results = []
+
+    for candidate in candidates:
+
+        result = rank_candidate(
+            candidate
+        )
+
+        results.append(
+            result
+        )
+
+    results.sort(
+        key=lambda x: x["final_score"],
+        reverse=True
+    )
+
+    return results
