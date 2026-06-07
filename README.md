@@ -59,3 +59,21 @@ Place the following file in this directory before running the project:
 Dataset source:
 
 Redrob Data & AI Challenge Participant Bundle.
+
+
+
+
+## Next Improvements
+
+- Split AI relevance into:
+  - AI Foundation Score
+  - LLM/RAG Score
+  - Production AI Score
+
+- Add semantic matching between JD and candidate profile
+
+- Add Hidden Gem Detection
+
+- Add Potential Score
+
+- Add explanation generation for recruiters
