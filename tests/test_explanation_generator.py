@@ -1,4 +1,4 @@
-from src.explanations.explanation_generator import (
+from src.reasoning.explanation_generator import (
     generate_explanation
 )
 

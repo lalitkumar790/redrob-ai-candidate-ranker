@@ -6,3 +6,5 @@ tqdm
 pyyaml
 matplotlib
 jupyter
+sentence-transformers
+torch

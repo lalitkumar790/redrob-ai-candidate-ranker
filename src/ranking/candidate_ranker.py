@@ -33,7 +33,16 @@ from src.scoring.production_experience_scorer import (
     calculate_production_experience_score
 )
 
-def rank_candidate(candidate):
+from src.scoring.evidence_scorer import (
+    calculate_evidence_score
+)
+
+from src.scoring.job_match_scorer_v4 import (
+    calculate_job_match_score_v4
+)
+
+
+def rank_candidate(candidate , jd_data=None):
 
     features = extract_candidate_features(candidate)
 
@@ -76,6 +85,28 @@ def rank_candidate(candidate):
     )
 )
 
+    evidence_score = (
+    calculate_evidence_score(
+        candidate
+    )
+)
+
+#     job_match_score = (
+#     calculate_job_match_score_v4(
+#         candidate,
+#         jd_data
+#     )
+# )
+
+    job_match_score = 0
+
+    if jd_data is not None:
+        job_match_score = (
+        calculate_job_match_score_v4(
+            candidate,
+            jd_data
+        )
+    )
     # final_score = (
     #     technical_score * 0.20 +
     #     signal_score * 0.20 +
@@ -104,15 +135,35 @@ def rank_candidate(candidate):
 #     + ai_score * 0.40
 #     + career_credibility * 0.20
 # )
-    final_score = (
-    technical_score * 0.15
-    + signal_score * 0.10
-    + experience_score * 0.10
-    + ai_score * 0.25
-    + career_credibility * 0.15
-    + production_experience_score * 0.25
-)
+#     final_score = (
+#     technical_score * 0.15
+#     + signal_score * 0.10
+#     + experience_score * 0.10
+#     + ai_score * 0.25
+#     + career_credibility * 0.15
+#     + production_experience_score * 0.25
+# )
 
+#     final_score = (
+#     technical_score * 0.10
+#     + signal_score * 0.10
+#     + experience_score * 0.05
+#     + ai_score * 0.20
+#     + career_credibility * 0.15
+#     + production_experience_score * 0.25
+#     + evidence_score * 0.15
+# )
+
+    final_score = (
+    technical_score * 0.10
+    + signal_score * 0.10
+    + experience_score * 0.05
+    + ai_score * 0.20
+    + career_credibility * 0.15
+    + production_experience_score * 0.15
+    + evidence_score * 0.10
+    + job_match_score * 0.15
+)
     # return {
     #     "candidate_id": candidate["candidate_id"],
     #     "title": candidate["profile"]["current_title"],
@@ -141,6 +192,8 @@ def rank_candidate(candidate):
     "ai_score": ai_score,
     "career_credibility": career_credibility,
     "production_experience_score": production_experience_score,
+    "evidence_score": evidence_score,
+    "job_match_score": job_match_score,
     "final_score": round(final_score, 2)
 }
 
@@ -148,14 +201,15 @@ def rank_candidate(candidate):
 
 
 
-def rank_candidates(candidates):
+def rank_candidates(candidates , jd_data=None):
 
     results = []
 
     for candidate in candidates:
 
         result = rank_candidate(
-            candidate
+            candidate , 
+            jd_data
         )
 
         results.append(
