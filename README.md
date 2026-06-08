@@ -1,5 +1,125 @@
 # Redrob AI Candidate Ranker
 
+## Overview
+
+This project ranks candidates for an AI Search and Retrieval role using a multi-factor ranking system.
+
+The solution combines candidate skills, recruiter engagement signals, career history, production experience, evidence-based profile analysis, and job-description alignment to identify the strongest candidates from a pool of 100,000 profiles.
+
+## Architecture
+
+Job Description
+
+↓
+
+JD Parser
+
+↓
+
+Feature Extraction
+
+↓
+
+Scoring Modules
+
+* Technical Score
+* Signal Score
+* Experience Score
+* AI Relevance Score
+* Career Credibility Score
+* Production Experience Score
+* Evidence Score
+* JD Match Score
+
+↓
+
+Candidate Ranker
+
+↓
+
+Reasoning Generator
+
+↓
+
+Top-100 Submission CSV
+
+## Key Features
+
+### Technical Skill Analysis
+
+Evaluates candidate skills against AI, retrieval, ranking, search, and machine learning requirements.
+
+### Production Experience Detection
+
+Identifies evidence of production deployment, search infrastructure, recommendation systems, ranking systems, retrieval pipelines, and real-world ML systems.
+
+### Evidence-Based Scoring
+
+Rewards candidates with concrete technical accomplishments while reducing the impact of keyword stuffing.
+
+### Job Description Matching
+
+Matches candidate skills and experience against the target role requirements including:
+
+* Retrieval
+* Ranking
+* Embeddings
+* RAG
+* LangChain
+* LLMs
+* A/B Testing
+
+### Reasoning Generation
+
+Generates candidate-specific explanations used in the final submission.
+
+## Reproducing Results
+
+Generate the final submission:
+
+python -m tests.test_submission_generator
+
+Preview submission:
+
+python -m tests.test_submission_preview
+
+## Output
+
+submission.csv
+
+Contains:
+
+candidate_id, rank, score, reasoning
+
+for the Top 100 ranked candidates.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- # Redrob AI Candidate Ranker
+
 AI-powered candidate discovery and ranking system for the Redrob Data & AI Challenge.
 
 ## Objective
@@ -76,4 +196,4 @@ Redrob Data & AI Challenge Participant Bundle.
 
 - Add Potential Score
 
-- Add explanation generation for recruiters
+- Add explanation generation for recruiters -->
