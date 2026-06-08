@@ -8,3 +8,5 @@ matplotlib
 jupyter
 sentence-transformers
 torch
+streamlit
+pandas

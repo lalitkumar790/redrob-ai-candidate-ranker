@@ -330,3 +330,16 @@ streamlit run app.py
 * PDF Resume Parsing
 * Interactive Recruiter Dashboard
 * Candidate Recommendation Explanations
+
+
+## Dashboard
+
+![Dashboard](screenshots/Dashboard.png)
+
+## Ranking Results
+
+![Results](screenshots/Ranking_results.png)
+
+## Candidate Reasoning
+
+![Reasoning](screenshots/Reasoning.png)
