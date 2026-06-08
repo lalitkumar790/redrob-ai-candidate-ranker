@@ -343,3 +343,36 @@ streamlit run app.py
 ## Candidate Reasoning
 
 ![Reasoning](screenshots/Reasoning.png)
+
+
+
+## Dataset
+
+The original challenge dataset containing approximately 100,000 candidate profiles is excluded from this repository due to size constraints.
+
+Expected local location:
+
+data/candidates.jsonl
+
+For cloud deployment and demonstration purposes, a lightweight sample dataset is included:
+
+data/demo_candidates.jsonl
+
+The ranking engine, scoring modules, and evaluation experiments were developed and validated using the complete challenge dataset, while the Streamlit application automatically falls back to the demo dataset when the full dataset is unavailable.
+
+To reproduce the full ranking results, place the original challenge dataset in the `data/` directory and run the submission pipeline.
+
+
+## Live Demo
+
+Streamlit Application:
+
+[https://redrob-ai-candidate-ranker-dwqqzzprtddpxodzh5vadx.streamlit.app/]
+
+## Dataset Note
+
+The original challenge dataset (~100,000 candidate profiles) is excluded from this repository due to size constraints.
+
+For cloud deployment, a lightweight demo dataset is used.
+
+The full ranking engine was developed and evaluated on the complete challenge dataset.
